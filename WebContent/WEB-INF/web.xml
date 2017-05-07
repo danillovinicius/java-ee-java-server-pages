@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>java-ee-java-server-pages</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>java-ee-java-server-pages</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>dbDriver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>dbUrl</param-name>
+		<param-value>jdbc:mysql://localhost:3306/learntoday</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>dbUser</param-name>
+		<param-value>learntoday</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>dbPwd</param-name>
+		<param-value>@learntoday@</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>errorHandler</servlet-name>
+		<jsp-file>/error.jsp</jsp-file>
+		<init-param>
+			<param-name>errorMessage</param-name>
+			<param-value>An internal error occurred while processing the request. Please contact System Administrator</param-value>
+		</init-param>
+		<init-param>
+			<param-name>imageUrl</param-name>
+			<param-value>images/error.png</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>errorHandler</servlet-name>
+		<url-pattern>/error.jsp</url-pattern>
+	</servlet-mapping>
+
 </web-app>
